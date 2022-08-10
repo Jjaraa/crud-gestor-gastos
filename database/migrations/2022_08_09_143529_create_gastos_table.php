@@ -16,6 +16,8 @@ class CreateGastosTable extends Migration
         Schema::create('gastos', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('tarjeta_id');
+
             $table->string('Nombre');
             $table->string('Descripcion');
             $table->double('Valor');

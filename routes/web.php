@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GastosController;
-
+use App\Http\Controllers\TarjetaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('gastos', GastosController::class)->middleware('auth');
+Route::resource('tarjetas', TarjetaController::class)->middleware('auth');
 
 Auth::routes([
   'reset' => false,

@@ -15,6 +15,11 @@ class CreateTarjetasTable extends Migration
     {
         Schema::create('tarjetas', function (Blueprint $table) {
             $table->id();
+
+            $table->string('Nombre');
+            $table->string('Numero');
+            $table->double('Banco');
+
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GastosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
+});
+
+Route::resource('gastos', GastosController::class)->middleware('auth');
+
+Auth::routes([
+  'reset' => false,
+  //  'register' => false, //desactivar el registro de usuarios
+  //  'reset' => false, //desactivar el restablecimiento de contraseñas
+  //   'verify' => false, //desactivar la verificacion de usuarios
+]);
+
+Route::get('/home', [GastosController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/', [GastosController::class, 'index']) -> name('home');
 });

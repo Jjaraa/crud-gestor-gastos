@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+
 <div class="container">
 
 <form action="{{ url('/gastos') }}" method="post" entrype="multipart/form-data" >

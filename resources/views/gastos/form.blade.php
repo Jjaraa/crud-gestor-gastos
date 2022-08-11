@@ -39,6 +39,14 @@
   >
 <br>
 
+<label for="tarjeta_id">Tarjeta asociada</label>
+<select class="form-control" id="tarjeta_id" name="tarjeta_id">
+  @foreach($tarjetas as $tarjeta)
+    <option value="{{ $tarjeta->id }}">{{ $tarjeta->Nombre }}</option>
+  @endforeach
+</select>
+<br>
+
 <a href="{{ url('/gastos') }}">Cancelar</a>
 <input type="submit" value="{{ $modo }} Gasto">
 <br>

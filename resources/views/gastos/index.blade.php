@@ -16,10 +16,10 @@
       <th>Nombre</th>
       <th>Descripción</th>
       <th>Valor</th>
+      <th>Tarjeta asociada</th>
       <th>Acciones</th>
     </tr>
   </thead>
-
   <tbody>
     @foreach($gastos as $gasto)
     <tr>
@@ -27,6 +27,7 @@
       <td>{{ $gasto->Nombre }}</td>
       <td>{{ $gasto->Descripcion }}</td>
       <td>{{ $gasto->Valor}}</td>
+      <td>{{ $gasto->tarjeta_id }}</td>
       <td>
         <div class="flex">
           <form action="{{ url('/gastos/'.$gasto->id.'/edit') }}" method="get">

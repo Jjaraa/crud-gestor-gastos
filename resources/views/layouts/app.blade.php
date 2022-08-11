@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{ url('/gastos') }}">Gastos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/gastos') }}">Tarjetas</a>
+                            <a class="nav-link" href="{{ url('/tarjetas') }}">Tarjetas</a>
                         </li>
                     </ul>
 

@@ -18,7 +18,7 @@ class CreateTarjetasTable extends Migration
 
             $table->string('Nombre');
             $table->string('Numero');
-            $table->double('Banco');
+            $table->string('Banco');
 
             $table->timestamps();
         });

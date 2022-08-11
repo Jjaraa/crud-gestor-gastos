@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
+<div class="container responsive-container">
 
 <form
   action="{{ url('/tarjetas/'.$tarjeta->id) }}"

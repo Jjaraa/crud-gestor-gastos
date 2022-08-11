@@ -1,4 +1,4 @@
-<h1>{{ $modo }} Tarjeta</h1>
+<h1 class="text-center mb-4">{{ $modo }} Tarjeta</h1>
 
 @if(count($errors)>0)
   <div class="alert alert-danger" role="alert">
@@ -14,6 +14,7 @@
 
 <label for="Nombre">Nombre</label>
 <input
+  class="form-control"
   type="text"
   name="Nombre"
   id="Nombre"
@@ -23,6 +24,7 @@
 
 <label for="Numero">Número de tarjeta</label>
 <input
+  class="form-control"
   type="text"
   name="Numero"
   id="Numero"
@@ -32,6 +34,7 @@
 
 <label for="Banco">Banco</label>
 <input
+  class="form-control"
   type="text"
   name="Banco"
   id="Banco"
@@ -39,6 +42,17 @@
   >
 <br>
 
-<a href="{{ url('/tarjetas') }}">Cancelar</a>
-<input type="submit" value="{{ $modo }} Tarjeta">
-<br>
+<div class="text-center mt-2">
+  <a
+    class="btn btn-secondary"
+    href="{{ url('/tarjetas') }}"
+    >
+    Cancelar</a>
+
+  <input
+    class="btn btn-primary"
+    type="submit"
+    value="{{ $modo }} Tarjeta"
+    >
+  <br>
+</div>

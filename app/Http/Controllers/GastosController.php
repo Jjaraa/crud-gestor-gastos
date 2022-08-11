@@ -78,7 +78,8 @@ class GastosController extends Controller
     public function edit($id)
     {
         $gasto = Gastos::findOrFail($id);
-        return view('gastos.edit', compact('gasto'));
+        $tarjetas['tarjetas'] = Tarjeta::all();
+        return view('gastos.edit', compact('gasto'), $tarjetas);
     }
 
     /**

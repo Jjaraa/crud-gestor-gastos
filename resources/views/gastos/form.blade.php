@@ -50,7 +50,11 @@
   value="{{ isset($gasto->tarjeta_id) ? $gasto->tarjeta_id : old('tarjeta_id') }}"
   >
   @foreach($tarjetas as $tarjeta)
-    <option value="{{ $tarjeta->id }}">{{ $tarjeta->Nombre }}</option>
+    @if(isset($gasto->tarjeta_id) && $gasto->tarjeta_id == $tarjeta->id)
+      <option value="{{ $tarjeta->id }}" selected>{{ $tarjeta->Nombre }}</option>
+    @else
+      <option value="{{ $tarjeta->id }}">{{ $tarjeta->Nombre }}</option>
+    @endif
   @endforeach
 </select>
 <br>

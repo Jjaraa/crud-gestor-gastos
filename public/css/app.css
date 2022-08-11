@@ -10903,3 +10903,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+.responsive-container {
+  width: 25%;
+  min-width: 300px;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .responsive-container {
+    width: 100%;
+  }
+}

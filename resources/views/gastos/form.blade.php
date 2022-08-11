@@ -1,4 +1,4 @@
-<h1>{{ $modo }} Gasto</h1>
+<h1 class="text-center mb-4">{{ $modo }} Gasto</h1>
 
 @if(count($errors)>0)
   <div class="alert alert-danger" role="alert">
@@ -14,6 +14,7 @@
 
 <label for="Nombre">Nombre</label>
 <input
+  class="form-control"
   type="text"
   name="Nombre"
   id="Nombre"
@@ -23,6 +24,7 @@
 
 <label for="Descripción">Descripción</label>
 <input
+  class="form-control"
   type="text"
   name="Descripcion"
   id="Descripción"
@@ -32,6 +34,7 @@
 
 <label for="Valor">Valor</label>
 <input
+  class="form-control"
   type="number"
   name="Valor"
   id="Valor"
@@ -40,13 +43,29 @@
 <br>
 
 <label for="tarjeta_id">Tarjeta asociada</label>
-<select class="form-control" id="tarjeta_id" name="tarjeta_id">
+<select
+  class="form-control"
+  id="tarjeta_id"
+  name="tarjeta_id"
+  value="{{ isset($gasto->tarjeta_id) ? $gasto->tarjeta_id : old('tarjeta_id') }}"
+  >
   @foreach($tarjetas as $tarjeta)
     <option value="{{ $tarjeta->id }}">{{ $tarjeta->Nombre }}</option>
   @endforeach
 </select>
 <br>
 
-<a href="{{ url('/gastos') }}">Cancelar</a>
-<input type="submit" value="{{ $modo }} Gasto">
-<br>
+<div class="text-center mt-2">
+  <a
+    class="btn btn-secondary"
+    href="{{ url('/gastos') }}"
+    >
+    Cancelar</a>
+
+  <input
+    class="btn btn-primary"
+    type="submit"
+    value="{{ $modo }} Gasto"
+    >
+  <br>
+</div>

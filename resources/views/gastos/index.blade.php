@@ -3,13 +3,15 @@
 
 <div class="container">
 
+<a class="btn btn-primary" href="{{ url('gastos/create') }}">Agregar nuevo gasto</a>
+
+<div class="mt-3">
 @if(Session::has('mensaje'))
 {{Session::get('mensaje')}}
 @endif
+</div>
 
-<a href="{{ url('gastos/create') }}">Agregar nuevo gasto</a>
-
-<table class="table table-light">
+<table class="table table-light responsive-table">
   <thead class="thead-light">
     <tr>
       <th>#</th>
@@ -17,7 +19,7 @@
       <th>Descripción</th>
       <th>Valor</th>
       <th>Tarjeta asociada</th>
-      <th>Acciones</th>
+      <th class="text-center">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -29,13 +31,12 @@
       <td>{{ $gasto->Valor}}</td>
       <td>{{ $gasto->tarjeta_id }}</td>
       <td>
-        <div class="flex">
+        <div class="d-flex justify-content-around">
           <form action="{{ url('/gastos/'.$gasto->id.'/edit') }}" method="get">
             @csrf
             <input class="btn btn-info" type="submit"
             Value="Editar">
           </form>
-
           <form action="{{ url('/gastos/'.$gasto->id) }}" method="post">
             @csrf
             {{ method_field('DELETE') }}

@@ -45,7 +45,7 @@
 <label for="tarjeta_id">Tarjeta asociada</label>
 <select
   class="form-control"
-  id="tarjeta_id"
+  id="selector_tarjeta"
   name="tarjeta_id"
   value="{{ isset($gasto->tarjeta_id) ? $gasto->tarjeta_id : old('tarjeta_id') }}"
   >

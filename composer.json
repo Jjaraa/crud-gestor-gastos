@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "Gestor de costos/Gestor de costos",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Proyecto personal de crud para gestion de costos. Semana de inserción en DevLEF",
+    "keywords": ["crud", "laravel"],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",

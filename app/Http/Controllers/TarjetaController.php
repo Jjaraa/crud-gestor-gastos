@@ -14,7 +14,8 @@ class TarjetaController extends Controller
      */
     public function index()
     {
-        //
+      $datos['tarjetas'] = Tarjeta::paginate(10);
+      return view('tarjetas.index',$datos);
     }
 
     /**
@@ -24,7 +25,7 @@ class TarjetaController extends Controller
      */
     public function create()
     {
-        //
+      return view('tarjetas.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class TarjetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $campos=[
+        'Nombre' => 'required|string|max:50',
+        'Numero' => 'required|string|max:12',
+        'Banco' => 'required|string|max:100',
+      ];
+      $mensaje=[
+              'required'=>'El :attribute es requerido',
+              ];
+
+      $this->validate($request,$campos,$mensaje);
+
+      $datosTarjetas = request()->except('_token');
+      Tarjeta::insert($datosTarjetas);
+
+      return redirect('tarjetas')->with('mensaje','Tarjeta agregada con exito');
     }
 
     /**
@@ -55,9 +70,10 @@ class TarjetaController extends Controller
      * @param  \App\Models\Tarjeta  $tarjeta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tarjeta $tarjeta)
+    public function edit($id)
     {
-        //
+      $tarjeta = Tarjeta::findOrFail($id);
+      return view('tarjetas.edit', compact('tarjeta'));
     }
 
     /**
@@ -67,9 +83,15 @@ class TarjetaController extends Controller
      * @param  \App\Models\Tarjeta  $tarjeta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tarjeta $tarjeta)
+    public function update(Request $request, $id)
     {
-        //
+      $datosTarjeta = request()->except([
+          '_token',
+          '_method'
+      ]);
+       Tarjeta::where('id', '=', $id)->update($datosTarjeta);
+
+      return redirect('/tarjetas')->with('mensaje','Tarjeta actualizada con exito');
     }
 
     /**
@@ -78,8 +100,9 @@ class TarjetaController extends Controller
      * @param  \App\Models\Tarjeta  $tarjeta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tarjeta $tarjeta)
+    public function destroy($id)
     {
-        //
+      Tarjeta::destroy($id);
+      return redirect('/tarjetas')->with('mensaje','Tarjeta eliminada con exito');
     }
 }

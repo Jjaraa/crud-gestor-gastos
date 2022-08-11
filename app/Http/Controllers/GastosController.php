@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gastos;
+use App\Models\Tarjeta;
 use Illuminate\Http\Request;
 
 class GastosController extends Controller
@@ -15,7 +16,8 @@ class GastosController extends Controller
     public function index()
     {
         $datos['gastos'] = Gastos::paginate(10);
-        return view('gastos.index',$datos);
+        $tarjetas['tarjetas'] = Tarjeta::all();
+        return view('gastos.index', $datos);
     }
 
     /**
@@ -26,7 +28,8 @@ class GastosController extends Controller
     public function create()
     {
         //
-        return view('gastos.create');
+        $tarjetas['tarjetas'] = Tarjeta::all();
+        return view('gastos.create', $tarjetas);
     }
 
     /**
